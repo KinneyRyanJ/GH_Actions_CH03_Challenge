@@ -16,7 +16,6 @@ jobs:
     
     - name: Upload artifact for linux
       uses: actions/upload-artifact@v1.0.0
-        name: linux
         path: ./${{ARTIFACT_NAME}}}
     
     - name: Print custom environment variable from ubuntu-latest
