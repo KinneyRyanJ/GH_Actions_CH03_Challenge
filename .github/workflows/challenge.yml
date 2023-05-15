@@ -3,20 +3,18 @@ name: ch3_challenge
 on: [push]
 
 env: 
-    ARTIFACT_NAME: 'custom environment variable for artifact upload'
+    ARTIFACT_NAME: myartifact
 
 jobs:
-  build:
-    name: Build
+  main:
     runs-on: ubuntu-latest
     
     steps:
     - name: Check out code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
     
-    - name: Upload artifact for linux
-      uses: actions/upload-artifact@v1.0.0
-        path: ./${{ARTIFACT_NAME}}}
-    
-    - name: Print custom environment variable from ubuntu-latest
-      run: echo "$ARTIFACT_NAME"
+    - name: Upload the artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: .
